@@ -15,7 +15,10 @@
 		<module>finagle-netty4</module>
 		<module>finagle-thrift</module>
 		<module>finagle-mux</module>
-	</modules>
+		<module>stats-util</module>
+        <!--<module>zookeeper-testing</module>-->
+        <!--<module>zookeep-client</module>-->
+    </modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
