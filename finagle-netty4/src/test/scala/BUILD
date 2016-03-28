@@ -9,3 +9,4 @@ junit_tests(name='scala',
   fatal_warnings=True,
   sources=rglobs('*.scala')
 )
+
