@@ -13,6 +13,7 @@
 		<module>finagle-http-netty4</module>
 		<module>finagle-integration</module>
 		<module>finagle-netty4</module>
+		<module>finagle-thrift</module>
 	</modules>
 
 	<properties>
