@@ -18,6 +18,7 @@
 		<module>finagle-netty4</module>
 		<module>finagle-redis</module>
 		<module>finagle-serversets</module>
+		<module>finagle-zipkin</module>
 		<module>stats-util</module>
 		<module>application-action</module>
 		<module>base</module>
@@ -25,6 +26,7 @@
 		<module>zookeeper-testing</module>
 		<module>client</module>
 		<module>zookeeper-server-set</module>
+		<module>libthrift</module>
 	</modules>
 
 	<properties>

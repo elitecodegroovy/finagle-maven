@@ -1,0 +1,295 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+	<groupId>com.twitter</groupId>
+	<artifactId>finagle-zipkin_2.10</artifactId>
+	<version>6.34.0</version>
+    <packaging>jar</packaging>
+
+    <name>finagle-zipkin</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.8</jdk.version>
+		<scala.version>2.11.7</scala.version>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>nexus-releases</id>
+            <name>Internal Repository</name>
+            <url>http://nexus.scm.it/nexus/content/repositories/releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <uniqueVersion>true</uniqueVersion>
+            <id>nexus-snapshots</id>
+            <name>Internal Snapshots</name>
+            <url>http://nexus.scm.it/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencies>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-scala_2.10</artifactId>
+			<version>2.4.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>16.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.twitter</groupId>
+			<artifactId>finagle-core_2.10</artifactId>
+			<version>6.34.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.twitter</groupId>
+			<artifactId>finagle-thrift_2.10</artifactId>
+			<version>6.34.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.twitter</groupId>
+			<artifactId>scrooge-core_2.10</artifactId>
+			<version>4.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.twitter</groupId>
+			<artifactId>util-codec_2.10</artifactId>
+			<version>6.33.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.twitter</groupId>
+			<artifactId>util-events_2.10</artifactId>
+			<version>6.33.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.apache.thrift</groupId>
+			<artifactId>libthrift</artifactId>
+			<version>0.5.0-1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.twitter</groupId>
+			<artifactId>util-zk-common_2.10</artifactId>
+			<version>6.33.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.biostime.common</groupId>
+			<artifactId>server-set</artifactId>
+			<version>1.0.103</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.11.7</version>
+		</dependency>
+
+
+	<dependency>
+		<groupId>org.scoverage</groupId>
+		<artifactId>scalac-scoverage-plugin_2.10</artifactId>
+		<version>1.1.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.scoverage</groupId>
+		<artifactId>scalac-scoverage-runtime_2.10</artifactId>
+		<version>1.1.1</version>
+	</dependency>
+
+		<!--test library-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<!--<scope>test</scope>-->
+		</dependency>
+
+		<dependency>
+			<groupId>org.scalacheck</groupId>
+			<artifactId>scalacheck_2.10</artifactId>
+			<version>1.12.2</version>
+			<!--<scope>test</scope>-->
+		</dependency>
+
+		<dependency>
+			<groupId>org.scalatest</groupId>
+			<artifactId>scalatest_2.10</artifactId>
+			<version>2.2.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/thrift</directory>
+			</resource>
+		</resources>
+		<sourceDirectory>src/main/scala</sourceDirectory>
+		<testSourceDirectory>src/test/scala</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.9.1</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/main/thrift-gen/scrooge</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>com.twitter</groupId>
+				<artifactId>scrooge-maven-plugin</artifactId>
+				<version>3.3.2</version>
+				<configuration>
+					<outputDirectory>src/main/thrift-gen</outputDirectory>
+					<language>java</language> <!-- default is scala -->
+					<thriftOpts>
+						<!-- add other Scrooge command line options using thriftOpts -->
+						<thriftOpt>--finagle</thriftOpt>
+						<thriftOpt>--ostrich</thriftOpt>
+					</thriftOpts>
+					<!-- tell scrooge to extract thrifts from these artifacts -->
+					<dependencyIncludes>
+						<include>event-logger-thrift</include>
+					</dependencyIncludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>thrift-sources</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>thrift-test-sources</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- 源文件也发布到nexus上 -->
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-source-plugin</artifactId>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>attach-sources</id>-->
+						<!--<phase>deploy</phase>-->
+						<!--<goals>-->
+							<!--<goal>jar</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-javadoc-plugin</artifactId>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>attach-javadocs</id>-->
+						<!--<phase>deploy</phase>-->
+						<!--<goals>-->
+							<!--<goal>jar</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+				<!--<configuration>-->
+					<!--<additionalparam>-Xdoclint:none</additionalparam>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.scala-tools</groupId>
+				<artifactId>maven-scala-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<!--<goal>testCompile</goal>-->
+						</goals>
+					</execution>
+				</executions>
+				<!--<configuration>-->
+					<!--<scalaVersion>${scala.version}</scalaVersion>-->
+					<!--<args>-->
+						<!--<arg>-target:jvm-1.6</arg>-->
+					<!--</args>-->
+				<!--</configuration>-->
+				<configuration>
+					<scalaVersion>${scala.version}</scalaVersion>
+					<sourceDir>src/main/java</sourceDir>
+					<jvmArgs>
+						<jvmArg>-Xms64m</jvmArg>
+						<jvmArg>-Xmx1024m</jvmArg>
+					</jvmArgs>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
