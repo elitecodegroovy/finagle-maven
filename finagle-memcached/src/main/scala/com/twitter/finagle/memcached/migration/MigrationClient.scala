@@ -10,7 +10,6 @@ import com.twitter.finagle.stats.{ClientStatsReceiver, NullStatsReceiver, StatsR
 import com.twitter.finagle.zookeeper.DefaultZkClientFactory
 import com.twitter.io.Buf
 import com.twitter.util.{Future, Time}
-
 /**
  * migration config data
  */

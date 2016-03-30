@@ -5,7 +5,6 @@
 	<artifactId>finagle-memcached_2.10</artifactId>
 	<version>6.34.0</version>
     <packaging>jar</packaging>
-
     <name>finagle-memcached</name>
     <url>http://maven.apache.org</url>
 
