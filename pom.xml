@@ -12,15 +12,17 @@
 		<module>finagle-http-compat</module>
 		<module>finagle-http-netty4</module>
 		<module>finagle-integration</module>
-		<module>finagle-netty4</module>
-		<module>finagle-thrift</module>
+		<module>finagle-memcached</module>
 		<module>finagle-mux</module>
+		<module>finagle-thrift</module>
+		<module>finagle-netty4</module>
+		<module>finagle-redis</module>
 		<module>stats-util</module>
 		<module>application-action</module>
 		<module>base</module>
 		<module>io</module>
-		<!--<module>zookeeper-testing</module>-->
-        <!--<module>zookeep-client</module>-->
+		<module>zookeeper-testing</module>
+		<module>client</module>
     </modules>
 
 	<properties>

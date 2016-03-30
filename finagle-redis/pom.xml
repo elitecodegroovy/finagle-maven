@@ -2,11 +2,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 	<groupId>com.twitter</groupId>
-	<artifactId>finagle-memcached_2.10</artifactId>
+	<artifactId>finagle-redis_2.10</artifactId>
 	<version>6.34.0</version>
     <packaging>jar</packaging>
 
-    <name>finagle-memcached</name>
+    <name>finagle-redis</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -32,48 +32,16 @@
     </distributionManagement>
 
     <dependencies>
-
 		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.4.4</version>
+			<groupId>com.twitter</groupId>
+			<artifactId>finagle-core_2.10</artifactId>
+			<version>6.34.0</version>
 		</dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.4.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-scala_2.10</artifactId>
-            <version>2.4.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.twitter</groupId>
-            <artifactId>finagle-cacheresolver_2.10</artifactId>
-            <version>6.34.0</version>
-        </dependency>
-        <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>16.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.twitter</groupId>
-            <artifactId>finagle-core_2.10</artifactId>
-            <version>6.34.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.twitter</groupId>
-            <artifactId>finagle-serversets_2.10</artifactId>
-            <version>6.34.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.twitter</groupId>
-            <artifactId>util-hashing_2.10</artifactId>
-            <version>6.33.0</version>
-        </dependency>
+		<dependency>
+			<groupId>com.twitter</groupId>
+			<artifactId>util-logging_2.10</artifactId>
+			<version>6.33.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.scala-lang</groupId>
