@@ -16,7 +16,10 @@
 		<module>finagle-thrift</module>
 		<module>finagle-mux</module>
 		<module>stats-util</module>
-        <!--<module>zookeeper-testing</module>-->
+		<module>application-action</module>
+		<module>base</module>
+		<module>io</module>
+		<!--<module>zookeeper-testing</module>-->
         <!--<module>zookeep-client</module>-->
     </modules>
 
